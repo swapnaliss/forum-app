@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Badge, Card } from 'react-bootstrap';
 import Comment from './Comment';
-import { BsArrowUp, BsArrowDown } from 'react-icons/bs';
+import { BsArrowUp, BsArrowDown, BsBookmark, BsChatDots, BsShare } from 'react-icons/bs';
 import { Image } from 'react-bootstrap';
 import moment from 'moment';
 
@@ -52,12 +52,6 @@ const Post = ({ post }) => {
                             </Badge>
                         ))}
                     </Card.Text>
-                    <Button variant={isBookmarked ? 'primary' : 'outline-primary'} onClick={handleBookmarkClick}>
-                        Bookmark
-                    </Button>{' '}
-                    <Button variant="outline-secondary" onClick={handleCommentClick}>
-                        Comment
-                    </Button>
                     <div className="mt-3">
                         <Button variant="link" onClick={handleUpvoteClick}>
                             <BsArrowUp size={20} color="green" />
@@ -65,6 +59,18 @@ const Post = ({ post }) => {
                         <span className="mr-2">{voteCount}</span>
                         <Button variant="link" onClick={handleDownvoteClick}>
                             <BsArrowDown size={20} color="red" />
+                        </Button>
+
+                        <Button variant={isBookmarked ? 'link' : 'outline-link'} onClick={handleBookmarkClick}>
+                            <BsBookmark size={20} />
+                        </Button>
+
+                        <Button variant="link" onClick={handleCommentClick}>
+                            <BsChatDots size={20} />
+                        </Button>
+
+                        <Button variant="link">
+                            <BsShare size={20} />
                         </Button>
                     </div>
                     <div>

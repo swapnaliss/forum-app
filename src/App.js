@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LandingPage from './components/LandingPage';
+import SortBar from './components/SortBar';
 
 const forumData = {
   accountId: '98767-888-78767',
@@ -76,10 +77,13 @@ function App() {
       <Container fluid>
         <Row>
           <Col md={3}>
-            <Sidebar onSortByDate={handleSortByDate} onSortByUpvotes={handleSortByUpvotes} />
+            <Sidebar />
           </Col>
-          <Col md={9}>
+          <Col md={6}>
             <LandingPage posts={sortedPosts} />
+          </Col>
+          <Col md={3}>
+            <SortBar onSortByDate={handleSortByDate} onSortByUpvotes={handleSortByUpvotes} />
           </Col>
         </Row>
       </Container>
