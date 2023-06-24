@@ -3,6 +3,7 @@ import { Button, Badge, Card } from 'react-bootstrap';
 import Comment from './Comment';
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs';
 import { Image } from 'react-bootstrap';
+import moment from 'moment';
 
 const Post = ({ post }) => {
     const [isBookmarked, setIsBookmarked] = useState(post.isBookmarked);
@@ -36,7 +37,7 @@ const Post = ({ post }) => {
                     <Image src={post.picUrl} roundedCircle height={32} width={32} className="mr-2" />
                     <div>
                         <h6 className="mb-0">{post.name}</h6>
-                        <p className="text-muted mb-0">@{post.username} - 2 mins ago</p>
+                        <p className="text-muted mb-0">@{post.username} - {moment(post.createdAt).fromNow()}</p>
                     </div>
                 </div>
 
