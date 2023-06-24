@@ -67,16 +67,23 @@ function App() {
   };
 
   return (
-    <Container fluid>
-      <Row>
-        <Col md={3}>
-          <Sidebar onSortByDate={handleSortByDate} onSortByUpvotes={handleSortByUpvotes} />
-        </Col>
-        <Col md={9}>
-          <LandingPage posts={sortedPosts} />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <div>
+        <h1 className="app-name" style={{ textAlign: 'center', margin: '20px 0' }}>
+          Forum App
+        </h1>
+      </div>
+      <Container fluid>
+        <Row>
+          <Col md={3}>
+            <Sidebar onSortByDate={handleSortByDate} onSortByUpvotes={handleSortByUpvotes} />
+          </Col>
+          <Col md={9}>
+            <LandingPage posts={sortedPosts} />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
