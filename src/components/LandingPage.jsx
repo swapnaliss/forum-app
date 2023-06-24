@@ -1,15 +1,11 @@
 import React from 'react';
+import Post from './Post';
 
 const LandingPage = ({ posts }) => {
   return (
     <div className="container">
       {posts.map((post) => (
-        <div className="card" key={post.id}>
-            <div className="card-body">
-                <h5 className="card-title">{post.post}</h5>
-                <p className="card-text">{post.postDescription}</p>
-            </div>
-        </div>
+        <Post key={post.postId} post={post} />
       ))}
     </div>
   );
