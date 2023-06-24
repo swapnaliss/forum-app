@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -53,14 +54,26 @@ const forumData = {
 }
 
 function App() {
+  const [sortedPosts, setSortedPosts] = useState(forumData.posts);
+
+  const handleSortByDate = () => {
+    const sorted = [...forumData.posts].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    setSortedPosts(sorted);
+  };
+
+  const handleSortByUpvotes = () => {
+    const sorted = [...forumData.posts].sort((a, b) => b.upvotes - a.upvotes);
+    setSortedPosts(sorted);
+  };
+
   return (
     <Container fluid>
       <Row>
         <Col md={3}>
-          <Sidebar />
+          <Sidebar onSortByDate={handleSortByDate} onSortByUpvotes={handleSortByUpvotes} />
         </Col>
         <Col md={9}>
-        <LandingPage posts={forumData.posts} />
+          <LandingPage posts={sortedPosts} />
         </Col>
       </Row>
     </Container>
