@@ -1,33 +1,31 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 
 const SortBar = ({ onSortByDate, onSortByUpvotes }) => {
-    const [sortBy, setSortBy] = useState('');
+  const [sortBy, setSortBy] = useState('');
 
-    const handleSortByDate = () => {
-        setSortBy('date');
-        onSortByDate();
-    };
+  const handleSortChange = (event) => {
+    const selectedOption = event.target.value;
+    setSortBy(selectedOption);
 
-    const handleSortByUpvotes = () => {
-        setSortBy('upvotes');
-        onSortByUpvotes();
-    };
+    if (selectedOption === 'date') {
+      onSortByDate();
+    } else if (selectedOption === 'upvotes') {
+      onSortByUpvotes();
+    }
+  };
 
-    return (
-        <div className="SortBar">
-            <h5>Sort By</h5>
-
-            <div className="mt-3">
-                <Button variant={sortBy === 'date' ? 'primary' : 'outline-primary'} onClick={handleSortByDate}>
-                    Sort by Date
-                </Button>
-                <Button variant={sortBy === 'upvotes' ? 'primary' : 'outline-primary'} onClick={handleSortByUpvotes}>
-                    Sort by Upvotes
-                </Button>
-            </div>
-        </div>
-    );
+  return (
+    <div className="SortBar">
+      <h5>Sort By</h5>
+      <div className="mt-3">
+        <select value={sortBy} onChange={handleSortChange} className="form-control">
+          <option value="">Select an option</option>
+          <option value="date">Date</option>
+          <option value="upvotes">Upvotes</option>
+        </select>
+      </div>
+    </div>
+  );
 };
 
 export default SortBar;
