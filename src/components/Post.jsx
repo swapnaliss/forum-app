@@ -39,15 +39,6 @@ const Post = ({ post }) => {
                         <p className="text-muted mb-0">@{post.username} - 2 mins ago</p>
                     </div>
                 </div>
-                <Card.Title>{post.post}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{post.postDescription}</Card.Subtitle>
-                <Card.Text>
-                    {post.tags.map((tag) => (
-                        <Badge key={tag} className="mr-1" variant="secondary">
-                            {tag}
-                        </Badge>
-                    ))}
-                </Card.Text>
 
                 <Card.Title>{post.post}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{post.postDescription}</Card.Subtitle>
